@@ -1,4 +1,4 @@
-# peduli_utang
+# Peduli Utang
 
 Aplikasi mengajukan permintaan hutang pada temanmu
 
