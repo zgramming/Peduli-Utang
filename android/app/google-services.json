@@ -1,0 +1,109 @@
+{
+  "project_info": {
+    "project_number": "91509058041",
+    "firebase_url": "https://a-s-a-a19b3.firebaseio.com",
+    "project_id": "a-s-a-a19b3",
+    "storage_bucket": "a-s-a-a19b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91509058041:android:c921288d01a9aa601af528",
+        "android_client_info": {
+          "package_name": "id.zeffry.atur_semua_aktifitas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91509058041-dn0kaoo0afvlav4mt2ta72dn4mc018bb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.zeffry.atur_semua_aktifitas",
+            "certificate_hash": "59e31846105c597d12eb44fd6567939754da8e63"
+          }
+        },
+        {
+          "client_id": "91509058041-a44a1nkqlc1rsf5e1rskfk41a0u6utj8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.zeffry.atur_semua_aktifitas",
+            "certificate_hash": "8a11eacecf50477e8418273e077fcff550b85276"
+          }
+        },
+        {
+          "client_id": "91509058041-s7r7vt31efcsptrcade122dfbhqc7pbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpGBzn2gmgA0tIL2LnokqBR8O7HA7aKs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91509058041-s7r7vt31efcsptrcade122dfbhqc7pbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91509058041:android:7bdda642e9a2588b1af528",
+        "android_client_info": {
+          "package_name": "reynando.zeffry.peduli_utang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91509058041-ageh9vs1fcfhdeoqqdjbba2l1rbd2lof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "reynando.zeffry.peduli_utang",
+            "certificate_hash": "ffd833d8ed9d3c6a3455a5988fd2ad09fd7332e0"
+          }
+        },
+        {
+          "client_id": "91509058041-v89c75udelhn1i0fgs8qmq6clenk0cvd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "reynando.zeffry.peduli_utang",
+            "certificate_hash": "c559f0e06c8af8baff471162d3fb6735069b0a9e"
+          }
+        },
+        {
+          "client_id": "91509058041-78okeh1p36ctosaer3e6m8413u6mmnr9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "reynando.zeffry.peduli_utang",
+            "certificate_hash": "8a11eacecf50477e8418273e077fcff550b85276"
+          }
+        },
+        {
+          "client_id": "91509058041-s7r7vt31efcsptrcade122dfbhqc7pbe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpGBzn2gmgA0tIL2LnokqBR8O7HA7aKs8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91509058041-s7r7vt31efcsptrcade122dfbhqc7pbe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
