@@ -35,7 +35,7 @@ class StatisticScreen extends StatelessWidget {
                     imageAssetUrl: '${AppConfig.urlImageAsset}/the-first.png',
                     textChildren: [
                       TextSpan(
-                        text: 'Syarif Hidayatullah ',
+                        text: '${firstPengutang.pengutang.nameUser} ',
                         style: appTheme.subtitle1(context).copyWith(
                               color: colorPallete.blue,
                               fontWeight: FontWeight.bold,
