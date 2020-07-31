@@ -12,6 +12,7 @@ abstract class UserGoogleModel with _$UserGoogleModel {
     String emailUser,
     String imageUser,
     String tokenFcm,
+    String allowUtang,
     DateTime createdDate,
   }) = _UserGoogleModel;
   factory UserGoogleModel.fromJson(Map<String, dynamic> json) => _$UserGoogleModelFromJson(json);

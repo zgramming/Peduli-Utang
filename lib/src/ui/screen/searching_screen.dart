@@ -39,6 +39,14 @@ class _SearchingScreenState extends State<SearchingScreen> {
             Consumer(
               (ctx, read) {
                 final filterList = read(showFilteredList);
+                if (filterList.values.isEmpty) {
+                  return Expanded(
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: Text('Daftar peminjam tidak ditemukan'),
+                    ),
+                  );
+                }
                 return Expanded(
                   child: SingleChildScrollView(
                     child: Column(

@@ -37,9 +37,7 @@ class UserGoogleApi {
           : '$baseUrl?id_or_email=$idOrEmail&email_user=$emailUser';
       final response = await http.get(
         chooseURL,
-        // headers: appConfig.headersApi,
       );
-      // print(response.body);
       final Map<String, dynamic> responseJson = json.decode(response.body);
       if (responseJson['status'] == 'ok') {
         final List list = responseJson['data'];
@@ -47,22 +45,20 @@ class UserGoogleApi {
         final listUser = list.map((e) => UserGoogleModel.fromJson(e)).toList();
         return listUser;
       } else {
-        print('masuk salah');
-
         throw responseJson['message'];
       }
     });
     return result;
   }
 
-  Future<String> validateUser({
+  Future<UserGoogleModel> validateUser({
     @required String idUser,
     @required String nameUser,
     @required String emailUser,
     @required String imageUser,
     @required String tokenFCM,
   }) async {
-    final result = await reusableRequestServer.requestServer(() async {
+    final UserGoogleModel result = await reusableRequestServer.requestServer(() async {
       final response = await http.post(
         '${appConfig.baseApiUrl}/${appConfig.userGoogleController}/validateUser',
         body: {
@@ -74,10 +70,34 @@ class UserGoogleApi {
         },
       );
       final Map<String, dynamic> responseJson = json.decode(response.body);
-      print(responseJson);
       final String message = responseJson['message'];
       if (responseJson['status'] == 1) {
-        return message;
+        final user = UserGoogleModel.fromJson(responseJson['data'] as Map<String, dynamic>);
+        return user;
+      } else {
+        throw message;
+      }
+    });
+    return result;
+  }
+
+  Future<UserGoogleModel> updateAllowUtang({
+    @required String idUser,
+    @required String allowUtang,
+  }) async {
+    final result = await reusableRequestServer.requestServer(() async {
+      final response = await http.post(
+        '${appConfig.baseApiUrl}/${appConfig.userGoogleController}/updateAllowUtang',
+        body: {
+          'id_user': idUser,
+          'allow_utang': allowUtang,
+        },
+      );
+      final Map<String, dynamic> responseJson = json.decode(response.body);
+      final String message = responseJson['message'];
+      if (responseJson['status'] == 1) {
+        final user = UserGoogleModel.fromJson(responseJson['data'] as Map<String, dynamic>);
+        return user;
       } else {
         throw message;
       }

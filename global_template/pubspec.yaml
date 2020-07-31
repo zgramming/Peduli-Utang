@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   cached_network_image: ^2.2.0+1
-  fluttertoast: ^5.0.1
+  fluttertoast: ^7.0.2
   package_info: ^0.4.1
 
 dev_dependencies:

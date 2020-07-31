@@ -22,6 +22,7 @@ class _$UserGoogleModelTearOff {
       String emailUser,
       String imageUser,
       String tokenFcm,
+      String allowUtang,
       DateTime createdDate}) {
     return _UserGoogleModel(
       idUser: idUser,
@@ -29,6 +30,7 @@ class _$UserGoogleModelTearOff {
       emailUser: emailUser,
       imageUser: imageUser,
       tokenFcm: tokenFcm,
+      allowUtang: allowUtang,
       createdDate: createdDate,
     );
   }
@@ -43,6 +45,7 @@ mixin _$UserGoogleModel {
   String get emailUser;
   String get imageUser;
   String get tokenFcm;
+  String get allowUtang;
   DateTime get createdDate;
 
   Map<String, dynamic> toJson();
@@ -50,8 +53,7 @@ mixin _$UserGoogleModel {
 }
 
 abstract class $UserGoogleModelCopyWith<$Res> {
-  factory $UserGoogleModelCopyWith(
-          UserGoogleModel value, $Res Function(UserGoogleModel) then) =
+  factory $UserGoogleModelCopyWith(UserGoogleModel value, $Res Function(UserGoogleModel) then) =
       _$UserGoogleModelCopyWithImpl<$Res>;
   $Res call(
       {String idUser,
@@ -59,11 +61,11 @@ abstract class $UserGoogleModelCopyWith<$Res> {
       String emailUser,
       String imageUser,
       String tokenFcm,
+      String allowUtang,
       DateTime createdDate});
 }
 
-class _$UserGoogleModelCopyWithImpl<$Res>
-    implements $UserGoogleModelCopyWith<$Res> {
+class _$UserGoogleModelCopyWithImpl<$Res> implements $UserGoogleModelCopyWith<$Res> {
   _$UserGoogleModelCopyWithImpl(this._value, this._then);
 
   final UserGoogleModel _value;
@@ -77,6 +79,7 @@ class _$UserGoogleModelCopyWithImpl<$Res>
     Object emailUser = freezed,
     Object imageUser = freezed,
     Object tokenFcm = freezed,
+    Object allowUtang = freezed,
     Object createdDate = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,16 +88,14 @@ class _$UserGoogleModelCopyWithImpl<$Res>
       emailUser: emailUser == freezed ? _value.emailUser : emailUser as String,
       imageUser: imageUser == freezed ? _value.imageUser : imageUser as String,
       tokenFcm: tokenFcm == freezed ? _value.tokenFcm : tokenFcm as String,
-      createdDate:
-          createdDate == freezed ? _value.createdDate : createdDate as DateTime,
+      allowUtang: allowUtang == freezed ? _value.allowUtang : allowUtang as String,
+      createdDate: createdDate == freezed ? _value.createdDate : createdDate as DateTime,
     ));
   }
 }
 
-abstract class _$UserGoogleModelCopyWith<$Res>
-    implements $UserGoogleModelCopyWith<$Res> {
-  factory _$UserGoogleModelCopyWith(
-          _UserGoogleModel value, $Res Function(_UserGoogleModel) then) =
+abstract class _$UserGoogleModelCopyWith<$Res> implements $UserGoogleModelCopyWith<$Res> {
+  factory _$UserGoogleModelCopyWith(_UserGoogleModel value, $Res Function(_UserGoogleModel) then) =
       __$UserGoogleModelCopyWithImpl<$Res>;
   @override
   $Res call(
@@ -103,14 +104,13 @@ abstract class _$UserGoogleModelCopyWith<$Res>
       String emailUser,
       String imageUser,
       String tokenFcm,
+      String allowUtang,
       DateTime createdDate});
 }
 
-class __$UserGoogleModelCopyWithImpl<$Res>
-    extends _$UserGoogleModelCopyWithImpl<$Res>
+class __$UserGoogleModelCopyWithImpl<$Res> extends _$UserGoogleModelCopyWithImpl<$Res>
     implements _$UserGoogleModelCopyWith<$Res> {
-  __$UserGoogleModelCopyWithImpl(
-      _UserGoogleModel _value, $Res Function(_UserGoogleModel) _then)
+  __$UserGoogleModelCopyWithImpl(_UserGoogleModel _value, $Res Function(_UserGoogleModel) _then)
       : super(_value, (v) => _then(v as _UserGoogleModel));
 
   @override
@@ -123,6 +123,7 @@ class __$UserGoogleModelCopyWithImpl<$Res>
     Object emailUser = freezed,
     Object imageUser = freezed,
     Object tokenFcm = freezed,
+    Object allowUtang = freezed,
     Object createdDate = freezed,
   }) {
     return _then(_UserGoogleModel(
@@ -131,8 +132,8 @@ class __$UserGoogleModelCopyWithImpl<$Res>
       emailUser: emailUser == freezed ? _value.emailUser : emailUser as String,
       imageUser: imageUser == freezed ? _value.imageUser : imageUser as String,
       tokenFcm: tokenFcm == freezed ? _value.tokenFcm : tokenFcm as String,
-      createdDate:
-          createdDate == freezed ? _value.createdDate : createdDate as DateTime,
+      allowUtang: allowUtang == freezed ? _value.allowUtang : allowUtang as String,
+      createdDate: createdDate == freezed ? _value.createdDate : createdDate as DateTime,
     ));
   }
 }
@@ -145,6 +146,7 @@ class _$_UserGoogleModel implements _UserGoogleModel {
       this.emailUser,
       this.imageUser,
       this.tokenFcm,
+      this.allowUtang,
       this.createdDate});
 
   factory _$_UserGoogleModel.fromJson(Map<String, dynamic> json) =>
@@ -161,11 +163,13 @@ class _$_UserGoogleModel implements _UserGoogleModel {
   @override
   final String tokenFcm;
   @override
+  final String allowUtang;
+  @override
   final DateTime createdDate;
 
   @override
   String toString() {
-    return 'UserGoogleModel(idUser: $idUser, nameUser: $nameUser, emailUser: $emailUser, imageUser: $imageUser, tokenFcm: $tokenFcm, createdDate: $createdDate)';
+    return 'UserGoogleModel(idUser: $idUser, nameUser: $nameUser, emailUser: $emailUser, imageUser: $imageUser, tokenFcm: $tokenFcm, allowUtang: $allowUtang, createdDate: $createdDate)';
   }
 
   @override
@@ -175,20 +179,17 @@ class _$_UserGoogleModel implements _UserGoogleModel {
             (identical(other.idUser, idUser) ||
                 const DeepCollectionEquality().equals(other.idUser, idUser)) &&
             (identical(other.nameUser, nameUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.nameUser, nameUser)) &&
+                const DeepCollectionEquality().equals(other.nameUser, nameUser)) &&
             (identical(other.emailUser, emailUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.emailUser, emailUser)) &&
+                const DeepCollectionEquality().equals(other.emailUser, emailUser)) &&
             (identical(other.imageUser, imageUser) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageUser, imageUser)) &&
+                const DeepCollectionEquality().equals(other.imageUser, imageUser)) &&
             (identical(other.tokenFcm, tokenFcm) ||
-                const DeepCollectionEquality()
-                    .equals(other.tokenFcm, tokenFcm)) &&
+                const DeepCollectionEquality().equals(other.tokenFcm, tokenFcm)) &&
+            (identical(other.allowUtang, allowUtang) ||
+                const DeepCollectionEquality().equals(other.allowUtang, allowUtang)) &&
             (identical(other.createdDate, createdDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.createdDate, createdDate)));
+                const DeepCollectionEquality().equals(other.createdDate, createdDate)));
   }
 
   @override
@@ -199,6 +200,7 @@ class _$_UserGoogleModel implements _UserGoogleModel {
       const DeepCollectionEquality().hash(emailUser) ^
       const DeepCollectionEquality().hash(imageUser) ^
       const DeepCollectionEquality().hash(tokenFcm) ^
+      const DeepCollectionEquality().hash(allowUtang) ^
       const DeepCollectionEquality().hash(createdDate);
 
   @override
@@ -218,10 +220,10 @@ abstract class _UserGoogleModel implements UserGoogleModel {
       String emailUser,
       String imageUser,
       String tokenFcm,
+      String allowUtang,
       DateTime createdDate}) = _$_UserGoogleModel;
 
-  factory _UserGoogleModel.fromJson(Map<String, dynamic> json) =
-      _$_UserGoogleModel.fromJson;
+  factory _UserGoogleModel.fromJson(Map<String, dynamic> json) = _$_UserGoogleModel.fromJson;
 
   @override
   String get idUser;
@@ -233,6 +235,8 @@ abstract class _UserGoogleModel implements UserGoogleModel {
   String get imageUser;
   @override
   String get tokenFcm;
+  @override
+  String get allowUtang;
   @override
   DateTime get createdDate;
   @override

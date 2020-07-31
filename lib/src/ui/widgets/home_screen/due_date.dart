@@ -19,6 +19,9 @@ class DueDate extends StatelessWidget {
         height: sizes.height(context) / 3.25,
         child: Consumer((ctx, read) {
           final utang = read(deadlineUtang);
+          if (utang.isEmpty) {
+            return Align(alignment: Alignment.center, child: Text('Utang tidak ditemukan'));
+          }
           return ListView.builder(
             itemCount: utang.length,
             shrinkWrap: true,

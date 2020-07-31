@@ -13,6 +13,7 @@ _$_UserGoogleModel _$_$_UserGoogleModelFromJson(Map<String, dynamic> json) {
     emailUser: json['email_user'] as String,
     imageUser: json['image_user'] as String,
     tokenFcm: json['token_fcm'] as String,
+    allowUtang: json['allow_utang'] as String,
     createdDate: json['created_date'] == null
         ? null
         : DateTime.parse(json['created_date'] as String),
@@ -26,5 +27,6 @@ Map<String, dynamic> _$_$_UserGoogleModelToJson(_$_UserGoogleModel instance) =>
       'email_user': instance.emailUser,
       'image_user': instance.imageUser,
       'token_fcm': instance.tokenFcm,
+      'allow_utang': instance.allowUtang,
       'created_date': instance.createdDate?.toIso8601String(),
     };

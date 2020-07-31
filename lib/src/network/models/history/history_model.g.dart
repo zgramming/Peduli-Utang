@@ -15,12 +15,14 @@ _$_HistoryModel _$_$_HistoryModelFromJson(Map<String, dynamic> json) {
     idUtang: json['id_utang'] as String,
     kodeAksi: json['kode_aksi'] as String,
     namaAksi: json['nama_aksi'] as String,
-    createdDate:
-        json['created_date'] == null ? null : DateTime.parse(json['created_date'] as String),
+    createdDate: json['created_date'] == null
+        ? null
+        : DateTime.parse(json['created_date'] as String),
   );
 }
 
-Map<String, dynamic> _$_$_HistoryModelToJson(_$_HistoryModel instance) => <String, dynamic>{
+Map<String, dynamic> _$_$_HistoryModelToJson(_$_HistoryModel instance) =>
+    <String, dynamic>{
       'id_history': instance.idHistory,
       'id_user': instance.idUser,
       'id_utang': instance.idUtang,

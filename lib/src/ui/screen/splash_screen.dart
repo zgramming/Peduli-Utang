@@ -29,29 +29,30 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Consumer((ctx, read) {
-        final globalState = read(globalStateNotifierProvider.state);
-        return SplashScreenTemplate(
-          image: ShowImageAsset(
-            imageUrl: 'asset/images/logo_white.png',
-            padding: EdgeInsets.all(sizes.width(context) / 10),
-          ),
-          copyRightVersion: CopyRightVersion(),
-          navigateAfterSplashScreen: (_) {
-            if (!globalState.alreadyOnboarding) {
-              return OnboardingScreen();
-            } else {
-              if (!globalState.alreadyLogin) {
-                return LoginScreen();
+      body: Consumer(
+        (ctx, read) {
+          final globalState = read(globalStateNotifierProvider.state);
+          return SplashScreenTemplate(
+            image: ShowImageAsset(
+              imageUrl: 'asset/images/logo_white.png',
+              padding: EdgeInsets.all(sizes.width(context) / 10),
+            ),
+            copyRightVersion: CopyRightVersion(),
+            navigateAfterSplashScreen: (_) {
+              if (!globalState.alreadyOnboarding) {
+                return OnboardingScreen();
               } else {
-                return WelcomeScreen();
+                if (!globalState.alreadyLogin) {
+                  return LoginScreen();
+                } else {
+                  return WelcomeScreen();
+                }
               }
-            }
-          },
-          backgroundColor: colorPallete.primaryColor,
-        );
-      }),
+            },
+            backgroundColor: colorPallete.primaryColor,
+          );
+        },
+      ),
     );
   }
 }

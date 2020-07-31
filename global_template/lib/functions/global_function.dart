@@ -231,7 +231,7 @@ class GlobalFunction {
         positioned = ToastGravity.BOTTOM;
         break;
     }
-    await FlutterToast.showToast(
+    await Fluttertoast.showToast(
       msg: message.toString(),
       backgroundColor: isError ? Colors.red : isSuccess ? Colors.green : backgroungColor,
       textColor: (isError || isSuccess) ? Colors.white : textColor,
@@ -239,6 +239,10 @@ class GlobalFunction {
       toastLength: isLongDuration ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT,
       gravity: positioned,
     );
+  }
+
+  Future<void> cancelToast() async {
+    await Fluttertoast.cancel();
   }
 
   ///! Ketuk 2 Kali Untuk Keluar

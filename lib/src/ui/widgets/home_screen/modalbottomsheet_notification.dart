@@ -28,42 +28,35 @@ class ModalBottomSheetNotification extends StatelessWidget {
           ),
           SizedBox(
             height: sizes.height(context) / 1.5,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    Consumer((ctx, read) {
-                      final utangFuture = read(showUtangByPembertang);
-                      final utang = read(unConfirmUtangList);
-                      final globalState = read(globalStateNotifierProvider.state);
-                      return utangFuture.when(
-                        data: (_) {
-                          if (utang.isEmpty) {
-                            return Center(child: Text('Permintaan konfirmasi kosong'));
-                          } else {
-                            if (globalState.isLoading) {
-                              return Center(child: CircularProgressIndicator());
-                            } else {
-                              return ListUtangNeedConfirm(
-                                utangNotConfirm: utang,
-                                ctx: ctx,
-                              );
-                            }
-                          }
-                        },
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        error: (error, stackTrace) => Text(error.toString()),
+            child: Consumer((ctx, read) {
+              final utangFuture = read(showUtangByPembertang);
+              final utang = read(unConfirmUtangList);
+              final globalState = read(globalStateNotifierProvider.state);
+              return utangFuture.when(
+                data: (_) {
+                  if (utang.isEmpty) {
+                    return Center(
+                        child: Text(
+                      'Permintaan konfirmasi kosong',
+                      style: appTheme.headline6(context),
+                    ));
+                  } else {
+                    if (globalState.isLoading) {
+                      return Center(child: CircularProgressIndicator());
+                    } else {
+                      return ListUtangNeedConfirm(
+                        utangNotConfirm: utang,
+                        ctx: ctx,
                       );
-                    }),
-                  ],
+                    }
+                  }
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
                 ),
-              ),
-            ),
+                error: (error, stackTrace) => Text(error.toString()),
+              );
+            }),
           ),
         ],
       ),

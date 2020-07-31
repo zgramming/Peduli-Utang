@@ -19,33 +19,28 @@ class UserProvider extends StateNotifier<UserGoogleModel> {
             imageUser: 'unkwnon',
             nameUser: 'unknown',
             tokenFcm: 'unknown',
+            allowUtang: '1',
           ),
         );
 
   final _userGoogleApi = UserGoogleApi();
   final _googleSignIn = GoogleSignIn();
   final _userSPKey = 'userKey';
+
   UserGoogleModel get initialState => state;
 
   Future<void> validateUser({
     @required GoogleSignInAccount googleAccount,
     @required String tokenFCM,
   }) async {
-    await _userGoogleApi.validateUser(
+    final result = await _userGoogleApi.validateUser(
       idUser: googleAccount.id,
       nameUser: googleAccount.displayName,
       emailUser: googleAccount.email,
       imageUser: googleAccount.photoUrl,
       tokenFCM: tokenFCM,
     );
-    state = UserGoogleModel(
-      idUser: googleAccount.id,
-      emailUser: googleAccount.email,
-      nameUser: googleAccount.displayName,
-      imageUser: googleAccount.photoUrl,
-      tokenFcm: tokenFCM,
-      createdDate: DateTime.now(),
-    );
+    state = result;
     await saveUser(state);
   }
 
@@ -87,7 +82,13 @@ class UserProvider extends StateNotifier<UserGoogleModel> {
     }
     final Map result = json.decode(getEncodeSession);
     final user = UserGoogleModel.fromJson(result);
-    state = user.copyWith(createdDate: DateTime.now());
+    state = user;
+  }
+
+  Future<void> updateAllowUtang(String value) async {
+    final result = await _userGoogleApi.updateAllowUtang(idUser: state.idUser, allowUtang: value);
+    await saveUser(result);
+    state = state.copyWith(allowUtang: value);
   }
 }
 

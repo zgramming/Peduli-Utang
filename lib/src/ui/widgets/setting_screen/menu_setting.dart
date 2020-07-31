@@ -5,6 +5,7 @@ class MenuSetting extends StatelessWidget {
   final Function onTap;
   final IconData icon;
   final String title;
+  final String subtitle;
   final Color backgroundColor;
   final Color iconColor;
   final Widget trailing;
@@ -12,6 +13,7 @@ class MenuSetting extends StatelessWidget {
   MenuSetting({
     @required this.onTap,
     @required this.title,
+    this.subtitle = '',
     this.leading,
     this.icon,
     this.trailing,
@@ -24,7 +26,7 @@ class MenuSetting extends StatelessWidget {
       onTap: onTap,
       child: Container(
         // color: colorPallete.blue,
-        height: sizes.height(context) / 10,
+        height: sizes.height(context) / 9,
         child: Row(
           children: <Widget>[
             CircleAvatar(
@@ -49,13 +51,24 @@ class MenuSetting extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Expanded(
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                title,
-                                textAlign: TextAlign.center,
-                                style: appTheme.subtitle1(context),
-                              ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: <Widget>[
+                                Expanded(
+                                  child: Align(
+                                    alignment: Alignment.bottomLeft,
+                                    child: Text(
+                                      title,
+                                      style: appTheme.subtitle1(context),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: 5),
+                                Text(
+                                  subtitle,
+                                  style: appTheme.caption(context),
+                                )
+                              ],
                             ),
                           ),
                           trailing ?? SizedBox()

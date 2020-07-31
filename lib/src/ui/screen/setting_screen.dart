@@ -86,12 +86,39 @@ class SettingScreen extends StatelessWidget {
               icon: Icons.brightness_3,
               onTap: null,
               title: 'Tema',
+              subtitle: 'Kamu bisa atur tampilan menjadi gelap atau terang',
               trailing: Consumer((ctx, read) {
                 final globalState = read(globalStateNotifierProvider.state);
                 return Switch.adaptive(
                   value: globalState.isDarkMode,
                   onChanged: (value) =>
                       globalStateNotifierProvider.read(context).setDarkModeTheme(value),
+                );
+              }),
+            ),
+            const SizedBox(height: 10),
+            MenuSetting(
+              icon: Icons.security,
+              onTap: null,
+              title: 'Izinkan Ngutang',
+              subtitle: 'Jika tidak aktif, orang lain tidak bisa meminta utang kepadamu',
+              trailing: Consumer((ctx, read) {
+                final user = read(userProvider.state);
+                final globalState = read(globalStateNotifierProvider.state);
+                var isAllowUtang = user.allowUtang == '1' ? true : false;
+                if (globalState.isLoading) {
+                  return CircularProgressIndicator();
+                }
+                return Switch.adaptive(
+                  value: isAllowUtang,
+                  onChanged: (value) async {
+                    var result = value ? '1' : '0';
+                    globalStateNotifierProvider.read(context).toggleLoading(true);
+                    await userProvider.read(context).updateAllowUtang(result);
+                    globalStateNotifierProvider.read(context).toggleLoading(false);
+
+                    // return globalStateNotifierProvider.read(context).setDarkModeTheme(value);
+                  },
                 );
               }),
             ),

@@ -24,7 +24,6 @@ class AddUtangScreen extends StatefulWidget {
 }
 
 class _AddUtangScreenState extends State<AddUtangScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _nominalController = TextEditingController();
   final TextEditingController _reasonController = TextEditingController();
   final LocalNotification localNotification = LocalNotification();
@@ -33,40 +32,6 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
   Uint8List _byteSignature;
   DateTime _pickedDateTime;
   var error = '';
-
-  Future<void> validateForm(UserGoogleModel userState) async {
-    final unFormatNumber = GlobalFunction().unFormatNumber(_nominalController.text);
-    final formatDate = GlobalFunction().formatYearMonthDaySpecific(_pickedDateTime);
-    final encodeUint8list = base64Encode(_byteSignature);
-    try {
-      globalStateNotifierProvider.read(context).toggleLoading(true);
-      final result = await utangProvider.read(context).addUtang(
-            pembertang: widget.resultQRCode.idUser,
-            pengutang: userState.idUser,
-            totalUtang: int.tryParse(unFormatNumber),
-            tglKembali: _pickedDateTime,
-            keterangan: _reasonController.text,
-            ttd: encodeUint8list,
-            selfieImage: _pickedImage,
-          );
-
-      await localNotification.showNotification(
-        idNotification: 1,
-        titleNotification: 'Permintaan Utang Berhasil',
-        bodyNotification:
-            'Tunggu pemberi utang mengkonfirmasi permintaanmu dengan detail Rp.${_nominalController.text} dan pengembalian pada $formatDate',
-      );
-      await GlobalFunction().showToast(message: result, isSuccess: true, isLongDuration: true);
-      globalStateNotifierProvider.read(context).toggleLoading(false);
-      Navigator.of(context).pop();
-    } catch (e) {
-      setState(() {
-        error = e.toString();
-      });
-      await GlobalFunction().showToast(message: e.toString(), isError: true);
-      globalStateNotifierProvider.read(context).toggleLoading(false);
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +59,11 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
             steps: showSteps(stepState),
             type: StepperType.horizontal,
             physics: ClampingScrollPhysics(),
-            controlsBuilder: (context, {onStepCancel, onStepContinue}) {
+            controlsBuilder: (
+              context, {
+              onStepCancel,
+              onStepContinue,
+            }) {
               // return Text(error);
               return Row(
                 children: <Widget>[
@@ -105,27 +74,29 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
                     child: Text(stepState == 0 ? 'Batal' : 'Kembali'),
                   ),
                   const SizedBox(width: 10),
-                  Consumer((ctx, read) {
-                    final globalState = read(globalStateNotifierProvider.state);
-                    if (globalState.isLoading) {
-                      return Center(child: CircularProgressIndicator());
-                    } else {
-                      return Row(
-                        children: <Widget>[
-                          RaisedButton(
-                            color: colorPallete.primaryColor,
-                            onPressed: onStepContinue,
-                            textColor: colorPallete.white,
-                            child: Text(
-                              stepState + 1 == showSteps(stepState).length
-                                  ? 'Konfirmasi'
-                                  : 'Lanjut',
+                  Consumer(
+                    (ctx, read) {
+                      final globalState = read(globalStateNotifierProvider.state);
+                      if (globalState.isLoading) {
+                        return Center(child: CircularProgressIndicator());
+                      } else {
+                        return Row(
+                          children: <Widget>[
+                            RaisedButton(
+                              color: colorPallete.primaryColor,
+                              onPressed: onStepContinue,
+                              textColor: colorPallete.white,
+                              child: Text(
+                                stepState + 1 == showSteps(stepState).length
+                                    ? 'Konfirmasi'
+                                    : 'Lanjut',
+                              ),
                             ),
-                          ),
-                        ],
-                      );
-                    }
-                  }),
+                          ],
+                        );
+                      }
+                    },
+                  ),
                 ],
               );
             },
@@ -139,7 +110,6 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
     final steps = [
       Step(
         content: StepsInformation(
-          formKey: _formKey,
           nominalController: _nominalController,
           reasonController: _reasonController,
           onPickedDateTime: _selectDateTime,
@@ -176,5 +146,44 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
 
   void _selectDateTime(DateTime pickedDateTime) {
     setState(() => _pickedDateTime = pickedDateTime);
+  }
+
+  Future<void> validateForm(UserGoogleModel userState) async {
+    if (_pickedImage == null ||
+        _pickedDateTime == null ||
+        _byteSignature == null ||
+        _nominalController.text.isEmpty) {
+      await GlobalFunction().showToast(message: 'Validasi belum lengkap', isError: true);
+      return null;
+    }
+    try {
+      final unFormatNumber = GlobalFunction().unFormatNumber(_nominalController.text);
+      final formatDate = GlobalFunction().formatYearMonthDaySpecific(_pickedDateTime);
+      final encodeUint8list = base64Encode(_byteSignature);
+      globalStateNotifierProvider.read(context).toggleLoading(true);
+
+      final result = await utangProvider.read(context).addUtang(
+            pembertang: widget.resultQRCode.idUser,
+            pengutang: userState.idUser,
+            totalUtang: int.tryParse(unFormatNumber),
+            tglKembali: _pickedDateTime,
+            keterangan: _reasonController.text,
+            ttd: encodeUint8list,
+            selfieImage: _pickedImage,
+          );
+
+      await localNotification.showNotification(
+        idNotification: 1,
+        titleNotification: 'Permintaan Utang Berhasil',
+        bodyNotification:
+            'Tunggu pemberi utang mengkonfirmasi permintaanmu dengan detail Rp.${_nominalController.text} dan pengembalian pada $formatDate',
+      );
+      await GlobalFunction().showToast(message: result, isSuccess: true, isLongDuration: true);
+      globalStateNotifierProvider.read(context).toggleLoading(false);
+      Navigator.of(context).pop();
+    } catch (e) {
+      globalStateNotifierProvider.read(context).toggleLoading(false);
+      await GlobalFunction().showToast(message: e.toString(), isError: true, isLongDuration: true);
+    }
   }
 }
