@@ -1,5 +1,7 @@
 # Peduli Utang
-
+<p align="center">
+  <img src="https://github.com/zgramming/Peduli-Utang/blob/master/screenshot/banner-github.png" height="400">
+</p>
 Aplikasi mengajukan permintaan hutang pada temanmu
 
 ## Getting Started
