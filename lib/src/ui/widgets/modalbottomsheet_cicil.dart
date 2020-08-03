@@ -59,19 +59,19 @@ class _ModalBottomSheetCicilState extends State<ModalBottomSheetCicil> {
                     final form = _formKey.currentState;
                     if (form.validate()) {
                       try {
-                        globalStateNotifierProvider.read(context).toggleLoading(true);
+                        context.read(globalStateNotifierProvider).toggleLoading(true);
                         final unFormat =
                             GlobalFunction().unFormatNumber(_totalCicilController.text);
-                        final result = await utangProvider.read(context).cicilUtang(
+                        final result = await context.read(utangProvider).cicilUtang(
                               idUtang: widget.model.idUtang,
                               pembertang: widget.model.pembertang.idUser,
                               totalCicil: int.tryParse(unFormat),
                             );
-                        globalStateNotifierProvider.read(context).toggleLoading(false);
+                        context.read(globalStateNotifierProvider).toggleLoading(false);
                         await GlobalFunction().showToast(message: result, isSuccess: true);
                         Navigator.of(context).pop();
                       } catch (e) {
-                        globalStateNotifierProvider.read(context).toggleLoading(false);
+                        context.read(globalStateNotifierProvider).toggleLoading(false);
                         await GlobalFunction().showToast(message: e.toString(), isError: true);
                       }
                     }

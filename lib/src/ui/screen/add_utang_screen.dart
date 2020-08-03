@@ -46,15 +46,15 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
           final userState = read(userProvider.state);
           return Stepper(
             currentStep: stepState,
-            onStepCancel: () => stepperStateNotifierProvider
-                .read(context)
+            onStepCancel: () => context
+                .read(stepperStateNotifierProvider)
                 .onStepCancel(onLastCancel: () => Navigator.of(context).pop()),
-            onStepContinue: () => stepperStateNotifierProvider.read(context).onStepContinue(
+            onStepContinue: () => context.read(stepperStateNotifierProvider).onStepContinue(
                   showSteps(stepState).length,
                   onDone: () async => await validateForm(userState),
                 ),
-            onStepTapped: (step) => stepperStateNotifierProvider
-                .read(context)
+            onStepTapped: (step) => context
+                .read(stepperStateNotifierProvider)
                 .onStepTap(step, showSteps(stepState).length),
             steps: showSteps(stepState),
             type: StepperType.horizontal,
@@ -160,9 +160,9 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
       final unFormatNumber = GlobalFunction().unFormatNumber(_nominalController.text);
       final formatDate = GlobalFunction().formatYearMonthDaySpecific(_pickedDateTime);
       final encodeUint8list = base64Encode(_byteSignature);
-      globalStateNotifierProvider.read(context).toggleLoading(true);
+      context.read(globalStateNotifierProvider).toggleLoading(true);
 
-      final result = await utangProvider.read(context).addUtang(
+      final result = await context.read(utangProvider).addUtang(
             pembertang: widget.resultQRCode.idUser,
             pengutang: userState.idUser,
             totalUtang: int.tryParse(unFormatNumber),
@@ -179,10 +179,10 @@ class _AddUtangScreenState extends State<AddUtangScreen> {
             'Tunggu pemberi utang mengkonfirmasi permintaanmu dengan detail Rp.${_nominalController.text} dan pengembalian pada $formatDate',
       );
       await GlobalFunction().showToast(message: result, isSuccess: true, isLongDuration: true);
-      globalStateNotifierProvider.read(context).toggleLoading(false);
+      context.read(globalStateNotifierProvider).toggleLoading(false);
       Navigator.of(context).pop();
     } catch (e) {
-      globalStateNotifierProvider.read(context).toggleLoading(false);
+      context.read(globalStateNotifierProvider).toggleLoading(false);
       await GlobalFunction().showToast(message: e.toString(), isError: true, isLongDuration: true);
     }
   }

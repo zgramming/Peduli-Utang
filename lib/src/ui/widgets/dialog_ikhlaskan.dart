@@ -35,14 +35,14 @@ class DialogIkhlaskan extends StatelessWidget {
                 return OutlineButton(
                   onPressed: () async {
                     try {
-                      globalStateNotifierProvider.read(context).toggleLoading(true);
+                      context.read(globalStateNotifierProvider).toggleLoading(true);
                       final result =
-                          await utangProvider.read(context).ikhlaskanUtang(idUtang: model.idUtang);
-                      globalStateNotifierProvider.read(context).toggleLoading(false);
+                          await context.read(utangProvider).ikhlaskanUtang(idUtang: model.idUtang);
+                      context.read(globalStateNotifierProvider).toggleLoading(false);
                       await GlobalFunction().showToast(message: result, isSuccess: true);
                       Navigator.of(context).pop();
                     } catch (e) {
-                      globalStateNotifierProvider.read(context).toggleLoading(false);
+                      context.read(globalStateNotifierProvider).toggleLoading(false);
                       await GlobalFunction().showToast(message: e.toString(), isError: true);
                     }
                   },

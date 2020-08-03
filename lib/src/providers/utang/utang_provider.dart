@@ -153,32 +153,32 @@ final showUtangByPembertang = FutureProvider.autoDispose(
   },
 );
 
-final utangByPengutang = Computed<List<UtangModel>>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final utangByPengutang = Provider<List<UtangModel>>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   final result = utang
       .where((element) => element.status == '1' && element.pembertang.idUser != user.idUser)
       .toList();
   return result;
 });
 
-final unConfirmUtangList = Computed<List<UtangModel>>((read) {
-  final utang = read(utangProvider.state);
+final unConfirmUtangList = Provider<List<UtangModel>>((ref) {
+  final utang = ref.watch(utangProvider.state);
   return utang.where((element) => element.status == '0').toList();
 });
 
-final totalYourUtang = Computed<int>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final totalYourUtang = Provider<int>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   return utang
       .where((element) => element.pengutang.idUser == user.idUser && element.status == '1')
       .toList()
       .length;
 });
 
-final totalTheirUtang = Computed<int>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final totalTheirUtang = Provider<int>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   var tempList = [...utang];
 
   return tempList
@@ -187,9 +187,9 @@ final totalTheirUtang = Computed<int>((read) {
       .length;
 });
 
-final deadlineUtang = Computed<List<UtangModel>>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final deadlineUtang = Provider<List<UtangModel>>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
 
   var tempList = [...utang];
   tempList.sort((first, end) => first.tglKembali.compareTo(end.tglKembali));
@@ -198,10 +198,10 @@ final deadlineUtang = Computed<List<UtangModel>>((read) {
       .toList();
 });
 
-final showFilteredList = Computed<Map<String, List<UtangModel>>>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
-  final query = read(queryFilter);
+final showFilteredList = Provider<Map<String, List<UtangModel>>>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
+  final query = ref.watch(queryFilter);
   var tempList = [...utang];
 
   final resultFilter = tempList
@@ -216,8 +216,8 @@ final showFilteredList = Computed<Map<String, List<UtangModel>>>((read) {
   return groupFilter;
 });
 
-final totalAllUtang = Computed.family<int, String>((read, param) {
-  final utang = read(utangProvider.state);
+final totalAllUtang = Provider.family<int, String>((ref, param) {
+  final utang = ref.watch(utangProvider.state);
   var tempList = [...utang];
 
   final resultFilter = tempList
@@ -229,8 +229,8 @@ final totalAllUtang = Computed.family<int, String>((read, param) {
   return total;
 });
 
-final totalRemainingUtang = Computed.family<int, String>((read, param) {
-  final utang = read(utangProvider.state);
+final totalRemainingUtang = Provider.family<int, String>((ref, param) {
+  final utang = ref.watch(utangProvider.state);
   var tempList = [...utang];
 
   final resultFilter = tempList
@@ -242,8 +242,8 @@ final totalRemainingUtang = Computed.family<int, String>((read, param) {
   return total;
 });
 
-final userWithTotalRemainingUtang = Computed.family<UtangModel, String>((read, param) {
-  final utang = read(utangProvider.state);
+final userWithTotalRemainingUtang = Provider.family<UtangModel, String>((ref, param) {
+  final utang = ref.watch(utangProvider.state);
   var tempList = [...utang];
   final result = tempList.firstWhere((element) => element.pengutang.idUser == param,
       orElse: () => UtangModel());

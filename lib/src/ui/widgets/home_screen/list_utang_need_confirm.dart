@@ -70,9 +70,9 @@ class ListUtangNeedConfirm extends StatelessWidget {
                 InkWell(
                   onTap: () async {
                     try {
-                      globalStateNotifierProvider.read(ctx).toggleLoading(true);
+                      ctx.read(globalStateNotifierProvider).toggleLoading(true);
                       print('proses cancel');
-                      final result = await utangProvider.read(context).cancelUtang(
+                      final result = await context.read(utangProvider).cancelUtang(
                             idUtang: element.idUtang,
                             pengutang: element.pengutang.idUser,
                           );
@@ -83,9 +83,9 @@ class ListUtangNeedConfirm extends StatelessWidget {
                         backgroungColor: colorPallete.accentColor,
                         toastPositioned: ToastPositioned.Center,
                       );
-                      globalStateNotifierProvider.read(ctx).toggleLoading(false);
+                      ctx.read(globalStateNotifierProvider).toggleLoading(false);
                     } catch (e) {
-                      globalStateNotifierProvider.read(ctx).toggleLoading(false);
+                      ctx.read(globalStateNotifierProvider).toggleLoading(false);
                       await GlobalFunction().showToast(
                         message: e.toString(),
                         isError: true,
@@ -103,17 +103,17 @@ class ListUtangNeedConfirm extends StatelessWidget {
                 InkWell(
                   onTap: () async {
                     try {
-                      globalStateNotifierProvider.read(ctx).toggleLoading(true);
-                      final result = await utangProvider.read(context).confirmUtang(
+                      ctx.read(globalStateNotifierProvider).toggleLoading(true);
+                      final result = await context.read(utangProvider).confirmUtang(
                           idUtang: element.idUtang, pengutang: element.pengutang.idUser);
                       await GlobalFunction().showToast(
                         message: result,
                         isSuccess: true,
                         toastPositioned: ToastPositioned.Center,
                       );
-                      globalStateNotifierProvider.read(ctx).toggleLoading(false);
+                      ctx.read(globalStateNotifierProvider).toggleLoading(false);
                     } catch (e) {
-                      globalStateNotifierProvider.read(ctx).toggleLoading(false);
+                      ctx.read(globalStateNotifierProvider).toggleLoading(false);
                       await GlobalFunction().showToast(
                         message: e.toString(),
                         isError: true,

@@ -27,9 +27,9 @@ final futureHistoryByUser = FutureProvider.autoDispose((ref) async {
   return result;
 });
 
-final totalIkhlaskanHistory = Computed<int>((read) {
-  final user = read(userProvider.state);
-  final history = read(historyProvider.state);
+final totalIkhlaskanHistory = Provider<int>((ref) {
+  final user = ref.watch(userProvider.state);
+  final history = ref.watch(historyProvider.state);
   final result = history
       .where((element) => element.kodeAksi == 'IKH' && element.idUser.idUser == user.idUser)
       .toList()
@@ -39,9 +39,9 @@ final totalIkhlaskanHistory = Computed<int>((read) {
 
 //! For Statistic Screen
 
-final biggestUtang = Computed<MapEntry<String, int>>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final biggestUtang = Provider<MapEntry<String, int>>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   final result = utang
       .where((element) => element.status == '1' && element.pembertang.idUser == user.idUser)
       .toList();
@@ -62,9 +62,9 @@ final biggestUtang = Computed<MapEntry<String, int>>((read) {
   return biggest;
 });
 
-final myFirstPembertang = Computed<UtangModel>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final myFirstPembertang = Provider<UtangModel>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   final result = utang.where((element) => element.pembertang.idUser != user.idUser).toList();
   if (result.isEmpty) {
     return null;
@@ -73,9 +73,9 @@ final myFirstPembertang = Computed<UtangModel>((read) {
   return result.first;
 });
 
-final myFirstPengutang = Computed<UtangModel>((read) {
-  final utang = read(utangProvider.state);
-  final user = read(userProvider.state);
+final myFirstPengutang = Provider<UtangModel>((ref) {
+  final utang = ref.watch(utangProvider.state);
+  final user = ref.watch(userProvider.state);
   final result = utang.where((element) => element.pengutang.idUser != user.idUser).toList();
   if (result.isEmpty) {
     return null;

@@ -21,8 +21,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      globalStateNotifierProvider.read(context).getAllSession();
-      userProvider.read(context).readUser();
+      context.read(globalStateNotifierProvider).getAllSession();
+      context.read(userProvider).readUser();
     });
   }
 

@@ -49,7 +49,7 @@ class CustomNavigationBar extends StatelessWidget {
           tabs: gNavItem,
           selectedIndex: globalState.indexBottomNavigation,
           onTabChange: (index) =>
-              globalStateNotifierProvider.read(context).setCurrentIndexBottomNavigation(index),
+              context.read(globalStateNotifierProvider).setCurrentIndexBottomNavigation(index),
         ),
       );
     });

@@ -15,21 +15,21 @@ class LoginScreen extends StatelessWidget {
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      globalStateNotifierProvider.read(context).toggleLoading(true);
+      context.read(globalStateNotifierProvider).toggleLoading(true);
       final tokenFCM = await firebaseMessaging.getToken();
       final result = await googleSignIn.signIn();
       if (result == null) {
-        globalStateNotifierProvider.read(context).toggleLoading(false);
+        context.read(globalStateNotifierProvider).toggleLoading(false);
 
         return null;
       }
-      await userProvider.read(context).validateUser(googleAccount: result, tokenFCM: tokenFCM);
-      await globalStateNotifierProvider.read(context).setAlreadyLogin(true);
-      globalStateNotifierProvider.read(context).toggleLoading(false);
+      await context.read(userProvider).validateUser(googleAccount: result, tokenFCM: tokenFCM);
+      await context.read(globalStateNotifierProvider).setAlreadyLogin(true);
+      context.read(globalStateNotifierProvider).toggleLoading(false);
 
       await Navigator.of(context).pushReplacementNamed(WelcomeScreen.routeNamed);
     } catch (e) {
-      globalStateNotifierProvider.read(context).toggleLoading(false);
+      context.read(globalStateNotifierProvider).toggleLoading(false);
 
       await GlobalFunction().showToast(message: e.toString(), isError: true, isLongDuration: true);
     }

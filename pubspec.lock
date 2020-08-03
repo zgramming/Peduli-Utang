@@ -285,7 +285,7 @@ packages:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.1"
+    version: "0.6.0-dev+2"
   flutter_signature_view:
     dependency: "direct main"
     description:
@@ -652,7 +652,7 @@ packages:
       name: riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.5.1"
+    version: "0.6.0-dev+2"
   rxdart:
     dependency: transitive
     description:

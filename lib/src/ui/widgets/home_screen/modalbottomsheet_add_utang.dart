@@ -16,8 +16,8 @@ class _ModalBottomSheetAddUtangState extends State<ModalBottomSheetAddUtang> {
   final TextEditingController emailController = TextEditingController();
 
   Future<void> searchByEmail() async {
-    final globalProvider = globalStateNotifierProvider.read(context);
-    final user = userProvider.read(context).initialState;
+    final globalProvider = context.read(globalStateNotifierProvider);
+    final user = context.read(userProvider).initialState;
     if (user.emailUser == emailController.text) {
       await GlobalFunction().showToast(
           message: 'Tidak dapat ber-utang ke diri sendiri', isError: true, isLongDuration: true);
@@ -26,7 +26,7 @@ class _ModalBottomSheetAddUtangState extends State<ModalBottomSheetAddUtang> {
     try {
       globalProvider.toggleLoading(true);
       final result =
-          await userProvider.read(context).searchUserByIdOrEmail(emailuser: emailController.text);
+          await context.read(userProvider).searchUserByIdOrEmail(emailuser: emailController.text);
       if (result != null) {
         globalProvider.toggleLoading(false);
         await Navigator.of(context).pushNamed(AddUtangScreen.routeNamed, arguments: result);
@@ -38,7 +38,7 @@ class _ModalBottomSheetAddUtangState extends State<ModalBottomSheetAddUtang> {
   }
 
   Future<void> searchById() async {
-    final user = userProvider.read(context).initialState;
+    final user = context.read(userProvider).initialState;
     try {
       final resultQR = await CommonFunction().scanQRKU(context: context);
       if (resultQR == user.idUser) {
@@ -46,7 +46,7 @@ class _ModalBottomSheetAddUtangState extends State<ModalBottomSheetAddUtang> {
             message: 'Tidak dapat ber-utang ke diri sendiri', isError: true, isLongDuration: true);
         return;
       }
-      final result = await userProvider.read(context).searchUserByIdOrEmail(
+      final result = await context.read(userProvider).searchUserByIdOrEmail(
             idOrEmail: 'id_user',
             idUser: resultQR,
           );

@@ -16,7 +16,7 @@ class SettingScreen extends StatelessWidget {
 
   Future<void> signOutWithGoogle(BuildContext context) async {
     await Future.wait([
-      userProvider.read(context).signOutWithGoogle(),
+      context.read(userProvider).signOutWithGoogle(),
       GlobalFunction().showToast(message: 'Berhasil Logout', isSuccess: true),
       Navigator.of(context).pushReplacementNamed(LoginScreen.routeNamed),
     ]);
@@ -92,7 +92,7 @@ class SettingScreen extends StatelessWidget {
                 return Switch.adaptive(
                   value: globalState.isDarkMode,
                   onChanged: (value) =>
-                      globalStateNotifierProvider.read(context).setDarkModeTheme(value),
+                      context.read(globalStateNotifierProvider).setDarkModeTheme(value),
                 );
               }),
             ),
@@ -113,11 +113,11 @@ class SettingScreen extends StatelessWidget {
                   value: isAllowUtang,
                   onChanged: (value) async {
                     var result = value ? '1' : '0';
-                    globalStateNotifierProvider.read(context).toggleLoading(true);
-                    await userProvider.read(context).updateAllowUtang(result);
-                    globalStateNotifierProvider.read(context).toggleLoading(false);
+                    context.read(globalStateNotifierProvider).toggleLoading(true);
+                    await context.read(userProvider).updateAllowUtang(result);
+                    context.read(globalStateNotifierProvider).toggleLoading(false);
 
-                    // return globalStateNotifierProvider.read(context).setDarkModeTheme(value);
+                    // return context.read(globalStateNotifierProvider).setDarkModeTheme(value);
                   },
                 );
               }),
@@ -126,7 +126,7 @@ class SettingScreen extends StatelessWidget {
             MenuSetting(
               icon: Icons.arrow_back,
               onTap: () async {
-                await globalStateNotifierProvider.read(context).setAlreadyLogin(false);
+                await context.read(globalStateNotifierProvider).setAlreadyLogin(false);
                 await signOutWithGoogle(context);
               },
               title: 'Keluar',

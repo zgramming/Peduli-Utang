@@ -17,7 +17,7 @@ class OnboardingScreen extends StatelessWidget {
     return IntroductionScreen(
       pages: showPageViewModel(context),
       onDone: () async {
-        await globalStateNotifierProvider.read(context).setAlreadyOnboarding(true);
+        await context.read(globalStateNotifierProvider).setAlreadyOnboarding(true);
         await Navigator.of(context).pushReplacementNamed(LoginScreen.routeNamed);
       },
       done: Text(

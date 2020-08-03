@@ -26,7 +26,7 @@ class _SearchingScreenState extends State<SearchingScreen> {
             const SizedBox(height: 20),
             TextFormFieldCustom(
               onSaved: (value) => '',
-              onChanged: (value) => queryFilter.read(context).state = value,
+              onChanged: (value) => context.read(queryFilter).state = value,
               prefixIcon: Icon(Icons.search),
               hintText: 'Cari...',
             ),
