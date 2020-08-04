@@ -20,8 +20,10 @@ class _$UtangModelTearOff {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      int totalUtang,
-      int sisaUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+          int totalUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+          int sisaUtang,
       DateTime tglKembali,
       String status,
       String keterangan,
@@ -51,7 +53,15 @@ mixin _$UtangModel {
   String get idUtang;
   UserGoogleModel get pembertang;
   UserGoogleModel get pengutang;
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'totalUtang')
   int get totalUtang;
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'sisaUtang')
   int get sisaUtang;
   DateTime get tglKembali;
   String get status;
@@ -72,8 +82,10 @@ abstract class $UtangModelCopyWith<$Res> {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      int totalUtang,
-      int sisaUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+          int totalUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+          int sisaUtang,
       DateTime tglKembali,
       String status,
       String keterangan,
@@ -158,8 +170,10 @@ abstract class _$UtangModelCopyWith<$Res> implements $UtangModelCopyWith<$Res> {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      int totalUtang,
-      int sisaUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+          int totalUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+          int sisaUtang,
       DateTime tglKembali,
       String status,
       String keterangan,
@@ -225,8 +239,10 @@ class _$_UtangModel implements _UtangModel {
       {this.idUtang,
       this.pembertang,
       this.pengutang,
-      this.totalUtang,
-      this.sisaUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+          this.totalUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+          this.sisaUtang,
       this.tglKembali,
       this.status,
       this.keterangan,
@@ -244,8 +260,16 @@ class _$_UtangModel implements _UtangModel {
   @override
   final UserGoogleModel pengutang;
   @override
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'totalUtang')
   final int totalUtang;
   @override
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'sisaUtang')
   final int sisaUtang;
   @override
   final DateTime tglKembali;
@@ -331,8 +355,10 @@ abstract class _UtangModel implements UtangModel {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      int totalUtang,
-      int sisaUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+          int totalUtang,
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+          int sisaUtang,
       DateTime tglKembali,
       String status,
       String keterangan,
@@ -350,8 +376,16 @@ abstract class _UtangModel implements UtangModel {
   @override
   UserGoogleModel get pengutang;
   @override
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'totalUtang')
   int get totalUtang;
   @override
+  @JsonKey(
+      fromJson: UtangModel._stringToInt,
+      toJson: UtangModel._stringFromInt,
+      name: 'sisaUtang')
   int get sisaUtang;
   @override
   DateTime get tglKembali;

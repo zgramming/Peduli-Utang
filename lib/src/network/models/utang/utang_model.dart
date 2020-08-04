@@ -11,8 +11,10 @@ abstract class UtangModel with _$UtangModel {
     String idUtang,
     UserGoogleModel pembertang,
     UserGoogleModel pengutang,
-    int totalUtang,
-    int sisaUtang,
+    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+        int totalUtang,
+    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+        int sisaUtang,
     DateTime tglKembali,
     String status,
     String keterangan,
@@ -21,6 +23,9 @@ abstract class UtangModel with _$UtangModel {
     DateTime createdDate,
   }) = _UtangModel;
   factory UtangModel.fromJson(Map<String, dynamic> json) => _$UtangModelFromJson(json);
+
+  static int _stringToInt(String number) => number == null ? null : int.parse(number);
+  static String _stringFromInt(int number) => number?.toString();
 }
 
 // import '../models.dart';
