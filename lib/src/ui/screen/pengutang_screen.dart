@@ -54,6 +54,7 @@ class PengutangScreen extends StatelessWidget {
                                   fit: BoxFit.cover,
                                   imageCircleRadius: 25,
                                 ),
+                                // title: Text(e.sisaUtang.toString()),
                                 title: Text('Rp.${GlobalFunction().formatNumber(e.sisaUtang)}'),
                                 subtitle: Text(
                                     '${GlobalFunction().formatYearMonthDaySpecific(e.createdDate)} ${GlobalFunction().formatHoursMinutes(e.createdDate)}',
