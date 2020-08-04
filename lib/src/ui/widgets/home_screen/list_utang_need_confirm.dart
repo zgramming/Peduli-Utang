@@ -47,6 +47,7 @@ class ListUtangNeedConfirm extends StatelessWidget {
               fit: BoxFit.cover,
             ),
             title: Text(
+              // '${element.createdDate}',
               GlobalFunction().formatYearMonthDaySpecific(element.createdDate),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
