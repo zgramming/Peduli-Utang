@@ -22,17 +22,18 @@ class HomeScreen extends StatelessWidget {
           loading: () => Center(child: CircularProgressIndicator()),
           error: (error, stackTrace) => Center(
             child: SingleChildScrollView(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Text('${error.toString()} || ${stackTrace.toString()}'),
-                RaisedButton(
-                  onPressed: () => context.refresh(showUtangUser),
-                  child: Text('Refresh'),
-                )
-              ],
-            )),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  Text('${error.toString()} || ${stackTrace.toString()}'),
+                  RaisedButton(
+                    onPressed: () => context.refresh(showUtangUser),
+                    child: Text('Refresh'),
+                  )
+                ],
+              ),
+            ),
           ),
           data: (_) {
             return SingleChildScrollView(
