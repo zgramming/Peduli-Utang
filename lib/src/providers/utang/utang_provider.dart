@@ -20,7 +20,7 @@ class UtangProvider extends StateNotifier<List<UtangModel>> {
     final utangByPengutang = await utangApi.getUtang(idUser, sebagaiApa: 'pengutang');
     var tempList = [...utangByPembertang, ...utangByPengutang];
     state = [...tempList];
-    print('showAllUtangUser ${state.length}');
+
     return tempList;
   }
 
@@ -32,12 +32,6 @@ class UtangProvider extends StateNotifier<List<UtangModel>> {
   }) async {
     final result = await utangApi.getUtang(idUser, sebagaiApa: sebagaiApa);
 
-    final filter = result
-        .where((element) => element.status == '1' && element.pengutang.idUser != idUser)
-        .toList();
-    final groupFilter = groupBy<UtangModel, String>(filter, (obj) => obj.pengutang.idUser);
-    print(groupFilter.toString());
-    // state = [...result];
     if (showOnlyConfirm) {
       return result.where((element) => element.status == '1').toList();
     } else if (showOnlyUnconfirm) {
