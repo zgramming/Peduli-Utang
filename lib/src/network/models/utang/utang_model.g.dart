@@ -15,8 +15,8 @@ _$_UtangModel _$_$_UtangModelFromJson(Map<String, dynamic> json) {
     pengutang: json['pengutang'] == null
         ? null
         : UserGoogleModel.fromJson(json['pengutang'] as Map<String, dynamic>),
-    totalUtang: UtangModel._stringToInt(json['totalUtang'] as String),
-    sisaUtang: UtangModel._stringToInt(json['sisaUtang'] as String),
+    totalUtang: UtangModel._stringToInt(json['total_utang'] as String),
+    sisaUtang: UtangModel._stringToInt(json['sisa_utang'] as String),
     tglKembali: json['tgl_kembali'] == null
         ? null
         : DateTime.parse(json['tgl_kembali'] as String),
@@ -35,8 +35,8 @@ Map<String, dynamic> _$_$_UtangModelToJson(_$_UtangModel instance) =>
       'id_utang': instance.idUtang,
       'pembertang': instance.pembertang,
       'pengutang': instance.pengutang,
-      'totalUtang': UtangModel._stringFromInt(instance.totalUtang),
-      'sisaUtang': UtangModel._stringFromInt(instance.sisaUtang),
+      'total_utang': UtangModel._stringFromInt(instance.totalUtang),
+      'sisa_utang': UtangModel._stringFromInt(instance.sisaUtang),
       'tgl_kembali': instance.tglKembali?.toIso8601String(),
       'status': instance.status,
       'keterangan': instance.keterangan,

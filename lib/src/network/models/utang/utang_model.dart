@@ -11,9 +11,9 @@ abstract class UtangModel with _$UtangModel {
     String idUtang,
     UserGoogleModel pembertang,
     UserGoogleModel pengutang,
-    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
         int totalUtang,
-    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+    @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
         int sisaUtang,
     DateTime tglKembali,
     String status,

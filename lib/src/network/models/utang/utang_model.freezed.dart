@@ -20,9 +20,9 @@ class _$UtangModelTearOff {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
           int totalUtang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
           int sisaUtang,
       DateTime tglKembali,
       String status,
@@ -56,12 +56,12 @@ mixin _$UtangModel {
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'totalUtang')
+      name: 'total_utang')
   int get totalUtang;
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'sisaUtang')
+      name: 'sisa_utang')
   int get sisaUtang;
   DateTime get tglKembali;
   String get status;
@@ -82,9 +82,9 @@ abstract class $UtangModelCopyWith<$Res> {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
           int totalUtang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
           int sisaUtang,
       DateTime tglKembali,
       String status,
@@ -170,9 +170,9 @@ abstract class _$UtangModelCopyWith<$Res> implements $UtangModelCopyWith<$Res> {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
           int totalUtang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
           int sisaUtang,
       DateTime tglKembali,
       String status,
@@ -239,9 +239,9 @@ class _$_UtangModel implements _UtangModel {
       {this.idUtang,
       this.pembertang,
       this.pengutang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
           this.totalUtang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
           this.sisaUtang,
       this.tglKembali,
       this.status,
@@ -263,13 +263,13 @@ class _$_UtangModel implements _UtangModel {
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'totalUtang')
+      name: 'total_utang')
   final int totalUtang;
   @override
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'sisaUtang')
+      name: 'sisa_utang')
   final int sisaUtang;
   @override
   final DateTime tglKembali;
@@ -355,9 +355,9 @@ abstract class _UtangModel implements UtangModel {
       {String idUtang,
       UserGoogleModel pembertang,
       UserGoogleModel pengutang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'totalUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'total_utang')
           int totalUtang,
-      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisaUtang')
+      @JsonKey(fromJson: UtangModel._stringToInt, toJson: UtangModel._stringFromInt, name: 'sisa_utang')
           int sisaUtang,
       DateTime tglKembali,
       String status,
@@ -379,13 +379,13 @@ abstract class _UtangModel implements UtangModel {
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'totalUtang')
+      name: 'total_utang')
   int get totalUtang;
   @override
   @JsonKey(
       fromJson: UtangModel._stringToInt,
       toJson: UtangModel._stringFromInt,
-      name: 'sisaUtang')
+      name: 'sisa_utang')
   int get sisaUtang;
   @override
   DateTime get tglKembali;
