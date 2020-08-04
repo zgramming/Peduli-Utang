@@ -19,7 +19,7 @@ class HeaderHomeScreen extends StatelessWidget {
       ),
       child: Column(
         children: <Widget>[
-          const SizedBox(height: 10),
+          SizedBox(height: MediaQuery.of(context).padding.top + 10),
           Text(
             'Sebagai Pemberi Utang',
             style: appTheme.headline6(context).copyWith(
