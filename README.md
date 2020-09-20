@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="https://github.com/zgramming/Peduli-Utang/blob/master/screenshot/banner-github.png" height="400">
 </p>
